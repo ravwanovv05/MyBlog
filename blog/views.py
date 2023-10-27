@@ -42,6 +42,10 @@ class BlogPageView(View):
         return render(request, template_name=self.template_name)
 
 
+class AddBlog(View):
+    pass
+
+
 class SinglePageView(View):
     template_name = 'single.html'
     context = {}
