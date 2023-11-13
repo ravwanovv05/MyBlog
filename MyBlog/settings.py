@@ -2,25 +2,18 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
+
 load_dotenv()
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv("SECRET_KEY")
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG")
+DEBUG = os.getenv("DEBUG", default=True)
 
 ALLOWED_HOSTS = ['*']
 
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -50,8 +43,7 @@ ROOT_URLCONF = 'MyBlog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -68,13 +60,18 @@ WSGI_APPLICATION = 'MyBlog.wsgi.application'
 
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': os.getenv("DJANGO_DB_NAME"),
+    #     'USER': os.getenv("DJANGO_DB_USER"),
+    #     'PASSWORD': os.getenv("DJANGO_DB_PASSWORD"),
+    #     'HOST': os.getenv("DJANGO_DB_HOST"),
+    #     'PORT': os.getenv("DJANGO_DB_PORT")
+    # }
+
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv("DJANGO_DB_NAME"),
-        'USER': os.getenv("DJANGO_DB_USER"),
-        'PASSWORD': os.getenv("DJANGO_DB_PASSWORD"),
-        'HOST': os.getenv("DJANGO_DB_HOST"),
-        'PORT': os.getenv("DJANGO_DB_PORT")
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3')
     }
 }
 
