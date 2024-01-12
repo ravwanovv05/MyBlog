@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import View
 from django.views.generic import CreateView
 
-from blog.models import Post
+from blog.models import Post, Contact
 from django.shortcuts import redirect
 
 
@@ -32,6 +32,23 @@ class ContactPageView(View):
 
     def get(self, request):
         return render(request, template_name=self.template_name)
+
+    def post(self, request):
+        name = request.POST.get('name')
+        phone_number = request.POST.get('phone_number')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+
+        contact = Contact.objects.create(
+            name=name,
+            phone_number=phone_number,
+            email=email,
+            subject=subject,
+            message=message
+        )
+        contact.save()
+        return redirect('/')
 
 
 class BlogPageView(View):

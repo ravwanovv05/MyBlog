@@ -60,19 +60,19 @@ WSGI_APPLICATION = 'MyBlog.wsgi.application'
 
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #     'NAME': os.getenv("DJANGO_DB_NAME"),
-    #     'USER': os.getenv("DJANGO_DB_USER"),
-    #     'PASSWORD': os.getenv("DJANGO_DB_PASSWORD"),
-    #     'HOST': os.getenv("DJANGO_DB_HOST"),
-    #     'PORT': os.getenv("DJANGO_DB_PORT")
-    # }
-
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3')
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.getenv("DJANGO_DB_NAME"),
+        'USER': os.getenv("DJANGO_DB_USER"),
+        'PASSWORD': os.getenv("DJANGO_DB_PASSWORD"),
+        'HOST': os.getenv("DJANGO_DB_HOST"),
+        'PORT': os.getenv("DJANGO_DB_PORT")
     }
+
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3')
+    # }
 }
 
 

@@ -18,7 +18,7 @@
       <excludeFolder url="file://$MODULE_DIR$/accounts/migrations" />
       <excludeFolder url="file://$MODULE_DIR$/media" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Python 3.11 (MyBlog)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TemplatesService">
